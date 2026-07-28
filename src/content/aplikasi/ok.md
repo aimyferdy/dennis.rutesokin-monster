@@ -14,8 +14,8 @@ downloads: 26K+
 android: Android 6.0+
 updated: 20 Juli 2026
 
-hero: https://cakra777rp.com/apk/Ai%20Mr%20Dennis-1.webp
-icon: https://cakra777rp.com/apk/Ai%20Mr%20Dennis.webp
+hero: https://cakra777rp.com/apk/yyrr-1.webp
+icon: https://cakra777rp.com/apk/yyrr.webp
 
 download: /odbmndfk.html
 ---
