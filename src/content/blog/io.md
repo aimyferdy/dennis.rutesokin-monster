@@ -1,7 +1,6 @@
 ---
 title: "Ai Mr Dennis dan Masa Depan AI Indonesia untuk Digital Growth"
 description: "Ai Mr Dennis menghadirkan pendekatan modern dalam pengembangan aplikasi AI Indonesia untuk membantu digital growth, automation, dan sistem digital yang lebih efisien."
-slug: "ai-mr-dennis-ai-indonesia-digital-growth"
 pubDate: 2026-05-25
 popular: true
 ---
