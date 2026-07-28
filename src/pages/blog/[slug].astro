@@ -65,140 +65,39 @@ const articleSchema = {
   slug={post.slug}
 >
 
-
-<section class="game-hero">
-      <div class="game-hero-bg">
-         <img src={displayImage} alt="" />
-      </div>
-
-      <div class="game-hero-overlay"></div>
-
-      <div class="container game-hero-inner">
-         <nav class="breadcrumb">
-            <a href="/"> Beranda </a>
-
-            <span>›</span>
-
-            <a href="/blog/"> Blog </a>
-
-            <span>›</span>
-
-            {post.data.title}
-         </nav>
-
-         <div class="game-hero-grid">
-            <div class="game-hero-copy">
-               <div class="game-hero-badge-row">
-                  {post.data.category && (
-
-                  <span class="game-tag game-tag-cat">
-                     {post.data.category}
-                  </span>
-
-                  )}
-               </div>
-
-               <h1>{post.data.title}</h1>
-
-               {post.data.description && (
-
-               <p class="game-detail-lead">{post.data.description}</p>
-
-               )}
-            </div>
-
-            <aside class="game-hero-panel">
-               <div class="game-panel-card">
-                  <img
-                     src={displayImage}
-                     alt={post.data.title}
-                     class="game-detail-icon"
-                     width="88"
-                     height="88"
-                  />
-
-                  <p class="game-panel-name">{post.data.title}</p>
-
-                  <p class="game-panel-label">Artikel Blog</p>
-
-                  <p class="game-panel-meta">
-                     {post.data.pubDate.toLocaleDateString("id-ID")}
-                  </p>
-               </div>
-            </aside>
-         </div>
-      </div>
-   </section>
-
-   <section class="section game-body">
-      <div class="container game-layout">
-         <main class="game-main">
-            <figure class="game-hero-shot">
-               <div class="game-shot-frame">
-                  <img
-                     src={displayImage}
-                     alt="{post.data.title}"
-                     loading="eager"
-                     width="1200"
-                     height="630"
-                  />
-               </div>
-            </figure>
-
-            {headings.length > 0 && (
-
-            <details class="game-faq-details">
-               <summary>📑 Daftar Isi</summary>
-
-               <TOC headings={headings} />
-            </details>
-
-            )}
-
-            <article class="game-block game-article">
-               <header class="game-section-head">
-                  <span class="game-section-num"> 01 </span>
-
-                  <h2>{post.data.title}</h2>
-               </header>
-
-               <div class="game-article-body">
-                  <Content />
-               </div>
-            </article>
-
-             <!-- Related -->
-<RelatedPosts
-  posts={posts}
-  currentSlug={post.slug}
-  title="Artikel Terkait"
-  baseUrl="/blog"
-/>
-         </main>
-      </div>
-   </section>
-   
-   
 <main class="article">
 
   <div class="container">
 
     <div class="article-wrap">
 
+
       <!-- Breadcrumb -->
       <nav class="breadcrumb">
 
-        <a href="/">Home</a>
+        <a href="/">
+          Beranda
+        </a>
 
-        <span>/</span>
+        <span>
+          /
+        </span>
 
-        <a href="/blog/">Blog</a>
+        <a href="/blog/">
+          Blog
+        </a>
 
-        <span>/</span>
+        <span>
+          /
+        </span>
 
-        <span>{post.data.title}</span>
+        <span>
+          {post.data.title}
+        </span>
 
       </nav>
+
+
 
       <!-- Header -->
       <header class="article-header">
@@ -207,58 +106,58 @@ const articleSchema = {
           {post.data.title}
         </h1>
 
+
         {post.data.description && (
+
           <p class="article-excerpt">
             {post.data.description}
           </p>
+
         )}
 
       </header>
 
-      <!-- Sticky CTA -->
-      <div class="sticky-cta">
 
-        <div class="sticky-content">
 
-          <div class="sticky-text">
-
-            <strong>
-              {post.data.title}
-            </strong>
-
-            {post.data.description && (
-              <p>
-                {post.data.description}
-              </p>
-            )}
-
-          </div>
-
-          <a
-            href="/tools/"
-            class="cta-btn"
-          >
-            Coba Sekarang
-          </a>
-
-        </div>
-
-      </div>
-
-      <!-- Featured -->
+      <!-- Cover -->
       <div class="article-cover">
 
-<img
-  src={displayImage}
-  alt={post.data.title}
-  loading="eager"
-  decoding="async"
-  fetchpriority="high"
-  width="1200"
-  height="630"
-/>
+        <img
+          src={displayImage}
+          alt={post.data.title}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          width="1200"
+          height="630"
+        />
 
       </div>
+
+
+
+      <!-- Info Blog -->
+      <div class="article-meta">
+
+        {post.data.date && (
+
+          <span>
+            📅 {post.data.date}
+          </span>
+
+        )}
+
+        {post.data.category && (
+
+          <span>
+            🏷️ {post.data.category}
+          </span>
+
+        )}
+
+      </div>
+
+
 
       <!-- TOC -->
       {headings.length > 0 && (
@@ -266,13 +165,16 @@ const articleSchema = {
         <details class="toc">
 
           <summary class="toc-title">
-    <span>
-      📑 Daftar Isi
-    </span>
 
-    <span class="toc-toggle">
-    </span>
+            <span>
+              📑 Daftar Isi
+            </span>
+
+            <span class="toc-toggle">
+            </span>
+
           </summary>
+
 
           <ul>
 
@@ -290,23 +192,37 @@ const articleSchema = {
 
           </ul>
 
+
         </details>
 
       )}
 
+
+
       <!-- Content -->
       <article class="article-content">
+
         <Content />
+
       </article>
 
 
- <!-- Related -->
-<RelatedPosts
-  posts={posts}
-  currentSlug={post.slug}
-  title="Artikel Terkait"
-  baseUrl="/blog"
-/>
+
+
+      <!-- Related -->
+
+      <RelatedPosts
+
+        posts={posts}
+
+        currentSlug={post.slug}
+
+        title="Artikel Terkait"
+
+        baseUrl="/blog"
+
+      />
+
 
     </div>
 
