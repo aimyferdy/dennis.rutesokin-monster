@@ -49,7 +49,7 @@ const relatedApps = allApps
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Beranda</a>
         <span>›</span>
-        <a href="/cakra777aplikasi/">Katalog Aplikasi</a>
+        <a href="/aplikasi/">Katalog Aplikasi</a>
         <span>›</span>
         Ai Mr Dennis
       </nav>
@@ -104,7 +104,7 @@ const relatedApps = allApps
         <aside class="game-hero-panel">
           <div class="game-panel-card">
             <div class="game-panel-icon-wrap">
-              <img src="https://cakra777rp.com/apk/Ai Mr Dennis.webp" alt="Ai Mr Dennis - Game Sepak Bola Seru dan Menantang" class="game-detail-icon" width="88" height="88">
+             <img src={data.hero} alt={data.title} class="game-detail-icon" width="88" height="88" />
             </div>
             <p class="game-panel-name">Ai Mr Dennis</p>
             <p class="game-panel-label">Unduh melalui cakra777</p>
@@ -293,101 +293,5 @@ const relatedApps = allApps
 
     </div>
   </section>
-
-
-<section class="game-hero">
-  <div class="container">
-
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Beranda</a>
-      <span>›</span>
-      <a href="/aplikasi/">Katalog Aplikasi</a>
-      <span>›</span>
-      <span>{data.title}</span>
-    </nav>
-
-    <div class="game-hero-grid">
-
-      <div class="game-hero-copy">
-
-        {data.category && (
-          <span class="game-tag game-tag-cat">
-            {data.category}
-          </span>
-        )}
-
-        <h1>{data.title}</h1>
-
-        {data.rating && (
-          <p class="game-detail-rating">
-            ⭐ {data.rating}
-          </p>
-        )}
-
-        <p>{data.description}</p>
-
-        <div class="game-stat-pills">
-
-          {data.version && (
-            <div class="game-stat-pill">
-              <small>Versi</small>
-              <strong>{data.version}</strong>
-            </div>
-          )}
-
-          {data.size && (
-            <div class="game-stat-pill">
-              <small>Ukuran</small>
-              <strong>{data.size}</strong>
-            </div>
-          )}
-
-          {data.updated && (
-            <div class="game-stat-pill">
-              <small>Diperbarui</small>
-              <strong>{data.updated}</strong>
-            </div>
-          )}
-
-        </div>
-
-      </div>
-
-      {data.icon && (
-        <aside class="game-hero-panel">
-
-          <img
-            src={data.icon}
-            alt={data.title}
-            class="game-detail-icon"
-            width="88"
-            height="88"
-          />
-
-          {data.download && (
-            <a
-              href={data.download}
-              class="btn btn-primary game-btn-download"
-              rel="nofollow noopener"
-            >
-              Unduh APK
-            </a>
-          )}
-
-        </aside>
-      )}
-
-    </div>
-
-  </div>
-</section>
-
-<section class="section game-body">
-  <div class="container">
-    <article class="game-article">
-      <Content />
-    </article>
-  </div>
-</section>
 
 </MainLayout>
