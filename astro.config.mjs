@@ -7,7 +7,7 @@ export default defineConfig({
 
   site:
     process.env.SITE_URL ||
-    'https://blog.rutesokin.monster',
+    'https://dennis.rutesokin.monster',
 
   integrations: [
     sitemap()
