@@ -1,14 +1,16 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, z } from 'astro:content';
 
 const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
-    image: z.string().optional(),
+
+    // 👇 TAMBAHKAN INI
     popular: z.boolean().optional(),
   }),
 });
+
 
 const aplikasi = defineCollection({
   schema: z.object({
