@@ -34,6 +34,27 @@ const aplikasi = defineCollection({
     updated: z.string().optional(),
 
     download: z.string().optional(),
+
+    // ===== Tambahan =====
+    pembaruanTerbaru: z.string().optional(),
+    pembaruanSebelumnya: z.string().optional(),
+
+    kelebihan: z.array(z.string()).optional(),
+    kekurangan: z.array(z.string()).optional(),
+
+    ulasan: z.array(
+      z.object({
+        nama: z.string(),
+        komentar: z.string(),
+      })
+    ).optional(),
+
+    faq: z.array(
+      z.object({
+        pertanyaan: z.string(),
+        jawaban: z.string(),
+      })
+    ).optional(),
   }),
 });
 
