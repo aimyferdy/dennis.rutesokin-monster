@@ -143,12 +143,124 @@ const relatedApps = allApps
 <Content />
           </div>
         </article>
+		
+{(data.pembaruanTerbaru || data.pembaruanSebelumnya) && (
+  <div class="game-update-grid">
+
+    {data.pembaruanTerbaru && (
+      <article class="game-block game-update game-update-new">
+        <header class="game-section-head game-section-head-sm">
+          <span class="game-section-num">02</span>
+          <h2>Pembaruan Terbaru</h2>
+        </header>
+
+        <p>{data.pembaruanTerbaru}</p>
+      </article>
+    )}
+
+    {data.pembaruanSebelumnya && (
+      <article class="game-block game-update game-update-prev">
+        <header class="game-section-head game-section-head-sm">
+          <span class="game-section-num">03</span>
+          <h2>Pembaruan Sebelumnya</h2>
+        </header>
+
+        <p>{data.pembaruanSebelumnya}</p>
+      </article>
+    )}
+
+  </div>
+)}
 
 
 
 
+{(data.kelebihan?.length || data.kekurangan?.length) && (
+  <div class="game-pros-cons">
 
+    {data.kelebihan?.length > 0 && (
+      <article class="game-block game-pros-block">
+        <header class="game-section-head game-section-head-sm">
+          <span class="game-section-num">04</span>
+          <h2>Kelebihan</h2>
+        </header>
 
+        <ul class="game-pros">
+          {data.kelebihan.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+    )}
+
+    {data.kekurangan?.length > 0 && (
+      <article class="game-block game-cons-block">
+        <header class="game-section-head game-section-head-sm">
+          <span class="game-section-num">05</span>
+          <h2>Kekurangan</h2>
+        </header>
+
+        <ul class="game-cons">
+          {data.kekurangan.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+    )}
+
+  </div>
+)}
+
+        
+		
+		
+{data.ulasan?.length > 0 && (
+  <article class="game-block game-reviews-block">
+    <header class="game-section-head">
+      <span class="game-section-num">06</span>
+      <h2>Ulasan Pengguna</h2>
+    </header>
+
+    <div class="game-reviews">
+      {data.ulasan.map((item, index) => (
+        <figure class={`game-review-card ${index === 2 ? "game-review-featured" : ""}`}>
+          <div class="game-review-quote" aria-hidden="true">"</div>
+
+          <figcaption class="rec-block-label">
+            {item.nama}
+          </figcaption>
+
+          <blockquote>
+            <p>{item.komentar}</p>
+          </blockquote>
+        </figure>
+      ))}
+    </div>
+  </article>
+)}
+
+  
+  
+{data.faq?.length > 0 && (
+  <article class="game-block game-faq">
+    <header class="game-section-head">
+      <span class="game-section-num">07</span>
+      <h2>Pertanyaan Umum</h2>
+    </header>
+
+    <div class="game-faq-list">
+      {data.faq.map((item) => (
+        <details class="game-faq-details">
+          <summary>{item.pertanyaan}</summary>
+
+          <div class="game-faq-answer">
+            <p>{item.jawaban}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </article>
+)}
 
 
 
