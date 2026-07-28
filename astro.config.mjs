@@ -1,26 +1,28 @@
-import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
 
 export default defineConfig({
-  output: 'static',
+  output: "static",
 
   site:
     process.env.SITE_URL ||
-    'https://blog.rutesokin.monster',
+    "https://blog.rutesokin.monster",
 
   integrations: [
-    sitemap()
+    mdx(),
+    sitemap(),
   ],
 
   markdown: {
     shikiConfig: {
-      theme: 'github-dark'
-    }
+      theme: "github-dark",
+    },
   },
 
   vite: {
     build: {
-      target: 'esnext'
-    }
-  }
+      target: "esnext",
+    },
+  },
 });
