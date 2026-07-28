@@ -1,0 +1,32 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import "../../styles/game.css";
+
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("aplikasi");
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+
+const { Content } = await render(post);
+---
+
+<MainLayout
+  title={post.data.title}
+  description={post.data.description}
+>
+
+<Content />
+
+</MainLayout>
