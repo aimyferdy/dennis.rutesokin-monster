@@ -81,7 +81,9 @@ const isTools = baseUrl === "/tools";
 }
 
 .related-card a{
-  display:block;
+  display:flex;
+  flex-direction:column;
+  height:100%;
   color:inherit;
   text-decoration:none;
 }
@@ -98,6 +100,13 @@ const isTools = baseUrl === "/tools";
   line-height:1.5;
   padding:14px 16px 6px;
   margin:0;
+
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  min-height:calc(1.5em * 2);
 }
 
 .related-card p{
@@ -106,6 +115,13 @@ const isTools = baseUrl === "/tools";
   padding:0 16px 16px;
   margin:0;
   line-height:1.6;
+
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  min-height:calc(1.6em * 2);
 }
 
 @media (max-width:768px){
@@ -117,11 +133,13 @@ const isTools = baseUrl === "/tools";
   .related-card h3{
     font-size:14px;
     padding:10px 12px 4px;
+    min-height:calc(1.5em * 2);
   }
 
   .related-card p{
     font-size:12px;
     padding:0 12px 12px;
+    min-height:calc(1.6em * 2);
   }
 }
 </style>
