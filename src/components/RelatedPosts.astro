@@ -1,59 +1,57 @@
 ---
 const {
   posts = [],
+  currentSlug = "",
   title = "Konten Terkait",
   baseUrl = ""
 } = Astro.props;
 
-const isTools = baseUrl === "/tools";
-
+const filteredPosts = posts.filter(
+  (post) => post.slug !== currentSlug
+);
 ---
 
-{
-  posts.length > 0 && (
-    <section class="related-posts">
+{filteredPosts.length > 0 && (
+  <section class="related-posts">
 
-      <h2>{title}</h2>
+    <h2>{title}</h2>
 
-      <div class="related-grid">
+    <div class="related-grid">
 
-        {posts.map((post) => (
+      {filteredPosts.map((post) => (
 
-          <article class="related-card">
+        <article class="related-card">
 
-            <a href={`${baseUrl}/${post.slug}/`}>
-{!isTools && (
-              <img
-                src={
-                  post.data.image
-                    ? post.data.image
-                    : `/api/og/${post.slug}.svg`
-                }
-                alt={post.data.title}
-                loading="lazy"
-              />
+          <a href={`${baseUrl}/${post.slug}/`}>
+
+            <img
+              src={post.data.image || `/api/og/${post.slug}.svg`}
+              alt={post.data.title}
+              loading="lazy"
+            />
+
+            <h3>{post.data.title}</h3>
+
+            {post.data.description && (
+              <p>
+                {post.data.description.length > 110
+                  ? post.data.description
+                      .substring(0, 110)
+                      .replace(/\s+\S*$/, "") + "..."
+                  : post.data.description}
+              </p>
+            )}
+
+          </a>
+
+        </article>
+
+      ))}
+
+    </div>
+
+  </section>
 )}
-              <h3>{post.data.title}</h3>
-
-              {post.data.description && (
-  <p>
-    {post.data.description.length > 110
-      ? post.data.description.substring(0, 110).replace(/\s+\S*$/, "") + "..."
-      : post.data.description}
-  </p>
-)}
-
-            </a>
-
-          </article>
-
-        ))}
-
-      </div>
-
-    </section>
-  )
-}
 
 <style is:global>
 .related-posts{
@@ -136,7 +134,10 @@ const isTools = baseUrl === "/tools";
     font-size:12px;
     line-height:1.5;
     padding:0 12px 12px;
+    display:-webkit-box;
     -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
   }
 }
 </style>
