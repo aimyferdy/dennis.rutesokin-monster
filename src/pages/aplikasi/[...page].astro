@@ -117,35 +117,29 @@ const { page } = Astro.props;
     </div>
 
 
+<nav class="app-pager">
+  {page.url.prev && (
+    <a
+      href={page.url.prev}
+      class="app-pager-prev"
+    >
+      ← Sebelumnya
+    </a>
+  )}
 
-    <nav class="pagination">
+  <span class="app-pager-current">
+    Halaman {page.currentPage} dari {page.lastPage}
+  </span>
 
-      {page.url.prev && (
-        <a
-          href={page.url.prev}
-          class="pagination-btn"
-        >
-          ← Sebelumnya
-        </a>
-      )}
-
-
-      <span>
-        Halaman {page.currentPage}
-        dari {page.lastPage}
-      </span>
-
-
-      {page.url.next && (
-        <a
-          href={page.url.next}
-          class="pagination-btn"
-        >
-          Berikutnya →
-        </a>
-      )}
-
-    </nav>
+  {page.url.next && (
+    <a
+      href={page.url.next}
+      class="app-pager-next"
+    >
+      Berikutnya →
+    </a>
+  )}
+</nav>
 
 
   </div>
