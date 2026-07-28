@@ -476,5 +476,63 @@ const pageDescription =
   background: var(--green-100);
 }
 </style>
+<script is:inline>
+(function () {
+  'use strict';
 
+  var input = document.getElementById('faqSearchInput');
+  var status = document.getElementById('faqSearchStatus');
+  if (!input) return;
+
+  var details = Array.prototype.slice.call(document.querySelectorAll('.faq-details'));
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.faq-group'));
+  if (!details.length) return;
+
+  function normalize(text) {
+    return (text || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  }
+
+  function rowText(el) {
+    var summary = el.querySelector('summary');
+    var answer = el.querySelector('.faq-answer');
+    return normalize((summary ? summary.textContent : '') + ' ' + (answer ? answer.textContent : ''));
+  }
+
+  var cache = details.map(function (el) {
+    return { el: el, text: rowText(el) };
+  });
+
+  function applyFilter() {
+    var query = normalize(input.value);
+    var visible = 0;
+
+    cache.forEach(function (item) {
+      var match = !query || item.text.indexOf(query) !== -1;
+      item.el.hidden = !match;
+      if (match) visible += 1;
+    });
+
+    groups.forEach(function (group) {
+      var hasVisible = !!group.querySelector('.faq-details:not([hidden])');
+      group.hidden = !hasVisible;
+    });
+
+    if (!status) return;
+
+    if (!query) {
+      status.hidden = true;
+      status.textContent = '';
+      return;
+    }
+
+    status.hidden = false;
+    status.textContent = visible
+      ? visible + ' pertanyaan ditemukan untuk "' + input.value.trim() + '"'
+      : 'Tidak ada pertanyaan yang cocok. Coba kata kunci lain.';
+  }
+
+  input.addEventListener('input', applyFilter);
+  input.addEventListener('search', applyFilter);
+})();
+</script>
 </MainLayout>
