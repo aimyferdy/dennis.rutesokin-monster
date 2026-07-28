@@ -1,13 +1,22 @@
 ---
 title: Ai Mr Dennis
 description: Ai Mr Dennis adalah game sepak bola yang seru.
+
+pubDate: 2026-07-20
+
 category: Football
 version: v5.4.2
 size: 43.4 MB
+
 rating: 4.3
+downloads: 26K+
+
+android: Android 6.0+
 updated: 20 Juli 2026
-icon: https://cakra777rp.com/apk/Ai%20Mr%20Dennis.webp
+
 hero: https://cakra777rp.com/apk/Ai%20Mr%20Dennis-1.webp
+icon: https://cakra777rp.com/apk/Ai%20Mr%20Dennis.webp
+
 download: /odbmndfk.html
 ---
 
