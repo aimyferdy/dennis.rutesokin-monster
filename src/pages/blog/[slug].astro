@@ -207,6 +207,47 @@ const articleSchema = {
 
 
         <div class="game-article-body">
+
+
+
+
+      <!-- TOC -->
+      {headings.length > 0 && (
+
+        <details class="toc">
+
+          <summary class="toc-title">
+    <span>
+      📑 Daftar Isi
+    </span>
+
+    <span class="toc-toggle">
+    </span>
+          </summary>
+
+          <ul>
+
+            {headings.map((heading) => (
+
+              <li class={`depth-${heading.depth}`}>
+
+                <a href={`#${heading.slug}`}>
+                  {heading.text}
+                </a>
+
+              </li>
+
+            ))}
+
+          </ul>
+
+        </details>
+
+      )}
+
+
+
+
 {headings.length > 0 && (
   <TOC headings={headings} />
 )}
