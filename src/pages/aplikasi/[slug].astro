@@ -30,6 +30,10 @@ const allApps = await getCollection("aplikasi");
 const relatedApps = allApps
   .filter((app) => app.data.popular && app.slug !== post.slug)
   .slice(0, 6);
+
+const relatedPosts = allApps.filter(
+  (item) => item.slug !== post.slug
+);
 ---
 
 <MainLayout
@@ -306,8 +310,8 @@ const relatedApps = allApps
 )}
 
 <RelatedPosts
-  posts={apps}
-  currentSlug={app.slug}
+  posts={relatedPosts}
+  currentSlug={post.slug}
   title="Aplikasi Terkait"
   baseUrl="/aplikasi"
 />
