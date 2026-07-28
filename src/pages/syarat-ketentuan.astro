@@ -1,3 +1,20 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { SITE } from '../lib/site';
+
+const pageTitle =
+  'About Robopragma - AI, SEO & Digital Modern';
+
+const pageDescription =
+  'Tentang Robopragma, platform digital modern yang fokus pada AI, SEO, automation, teknologi, tools online dan pengembangan website modern ultra cepat.';
+---
+
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={`${SITE.url()}/about`}
+>
+
 
   <section class="page-hero">
     <div class="container">
@@ -21,3 +38,5 @@
       </article>
     </div>
   </section>
+
+</MainLayout>
