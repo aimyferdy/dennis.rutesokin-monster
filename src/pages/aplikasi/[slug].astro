@@ -12,9 +12,7 @@ export async function getStaticPaths() {
     params: {
       slug: post.slug,
     },
-    props: {
-      post,
-    },
+    props: { post },
   }));
 }
 
@@ -23,16 +21,17 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const canonical = `${SITE.url()}/aplikasi/${post.slug}`;
+const data = post.data;
 ---
 
 <MainLayout
-  title={post.data.title}
-  description={post.data.description}
+  title={data.title}
+  description={data.description}
   canonical={canonical}
   slug={post.slug}
 >
 
-<section class="page-hero">
+<section class="game-hero">
   <div class="container">
 
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -40,27 +39,90 @@ const canonical = `${SITE.url()}/aplikasi/${post.slug}`;
       <span>›</span>
       <a href="/aplikasi/">Katalog Aplikasi</a>
       <span>›</span>
-      {post.data.title}
+      <span>{data.title}</span>
     </nav>
 
-    <h1>{post.data.title}</h1>
+    <div class="game-hero-grid">
 
-    <p class="page-hero-lead">
-      {post.data.description}
-    </p>
+      <div class="game-hero-copy">
+
+        {data.category && (
+          <span class="game-tag game-tag-cat">
+            {data.category}
+          </span>
+        )}
+
+        <h1>{data.title}</h1>
+
+        {data.rating && (
+          <p class="game-detail-rating">
+            ⭐ {data.rating}
+          </p>
+        )}
+
+        <p>{data.description}</p>
+
+        <div class="game-stat-pills">
+
+          {data.version && (
+            <div class="game-stat-pill">
+              <small>Versi</small>
+              <strong>{data.version}</strong>
+            </div>
+          )}
+
+          {data.size && (
+            <div class="game-stat-pill">
+              <small>Ukuran</small>
+              <strong>{data.size}</strong>
+            </div>
+          )}
+
+          {data.updated && (
+            <div class="game-stat-pill">
+              <small>Diperbarui</small>
+              <strong>{data.updated}</strong>
+            </div>
+          )}
+
+        </div>
+
+      </div>
+
+      {data.icon && (
+        <aside class="game-hero-panel">
+
+          <img
+            src={data.icon}
+            alt={data.title}
+            class="game-detail-icon"
+            width="88"
+            height="88"
+          />
+
+          {data.download && (
+            <a
+              href={data.download}
+              class="btn btn-primary game-btn-download"
+              rel="nofollow noopener"
+            >
+              Unduh APK
+            </a>
+          )}
+
+        </aside>
+      )}
+
+    </div>
 
   </div>
 </section>
 
-<section class="section">
+<section class="section game-body">
   <div class="container">
-
     <article class="game-article">
-
       <Content />
-
     </article>
-
   </div>
 </section>
 
