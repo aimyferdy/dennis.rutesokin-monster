@@ -61,19 +61,18 @@ import { SITE } from "../lib/site";
   </header>
 <style is:global>
 .brand{
-    width:470px;
-    max-width:72vw;
+    display:flex;
+    align-items:center;
 }
 
 .brand-logo{
-    width:100%;
-    height:auto;
+    height:48px;
+    width:auto;
+    max-width:100%;
 }
-
 @media (max-width:900px){
-    .brand{
-        width:240px;
-        max-width:75%;
+    .brand-logo{
+        height:36px;
     }
- }
+}
 </style>
