@@ -203,46 +203,85 @@ const articleSchema = {
 
         </header>
 
+<details class="game-faq-details">
+  <summary>📑 Daftar Isi</summary>
 
+  <ul>
+    {headings.map((heading) => (
+      <li class={`depth-${heading.depth}`}>
+        <a href={`#${heading.slug}`}>
+          {heading.text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</details>
+
+<style is:global>
+.game-faq-details{
+  margin:24px 0;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.game-faq-details summary{
+  padding:16px 20px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:16px;
+  list-style:none;
+  user-select:none;
+  background:#f8fafc;
+}
+
+.game-faq-details summary::-webkit-details-marker{
+  display:none;
+}
+
+.game-faq-details summary::after{
+  content:"+";
+  float:right;
+  font-size:20px;
+  line-height:1;
+}
+
+.game-faq-details[open] summary::after{
+  content:"−";
+}
+
+.game-faq-details ul{
+  list-style:none;
+  margin:0;
+  padding:12px 20px 18px;
+}
+
+.game-faq-details li{
+  margin:8px 0;
+}
+
+.game-faq-details li.depth-3{
+  padding-left:16px;
+}
+
+.game-faq-details li.depth-4{
+  padding-left:32px;
+}
+
+.game-faq-details a{
+  color:var(--primary);
+  text-decoration:none;
+  line-height:1.7;
+}
+
+.game-faq-details a:hover{
+  text-decoration:underline;
+}
+<style>
 
         <div class="game-article-body">
 
-
-
-
-      <!-- TOC -->
-      {headings.length > 0 && (
-
-        <details class="toc">
-
-          <summary class="toc-title">
-    <span>
-      📑 Daftar Isi
-    </span>
-
-    <span class="toc-toggle">
-    </span>
-          </summary>
-
-          <ul>
-
-            {headings.map((heading) => (
-
-              <li class={`depth-${heading.depth}`}>
-
-                <a href={`#${heading.slug}`}>
-                  {heading.text}
-                </a>
-
-              </li>
-
-            ))}
-
-          </ul>
-
-        </details>
-
-      )}
 
           <Content />
 
