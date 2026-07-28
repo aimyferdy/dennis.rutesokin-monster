@@ -29,6 +29,15 @@ const allApps = await getCollection("aplikasi");
 const relatedApps = allApps
   .filter((app) => app.data.popular && app.slug !== post.slug)
   .slice(0, 6);
+  
+const hash = [...post.slug].reduce(
+  (sum, char) => sum + char.charCodeAt(0),
+  0
+);
+
+const startCount = 10000 + (hash * 37);
+
+
 ---
 
 <MainLayout
@@ -65,7 +74,7 @@ const relatedApps = allApps
             <span class="game-stars">★★★★★</span>
             <strong>4.3</strong>
             <span class="game-rating-sep">·</span>
-            26K+ unduhan
+            {startCount}
           </p>
           <p class="game-detail-lead">{data.description}</p>
 
