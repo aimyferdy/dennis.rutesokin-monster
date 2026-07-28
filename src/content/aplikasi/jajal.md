@@ -38,6 +38,9 @@ ulasan:
 
   - nama: Bima
     komentar: Grafisnya bagus dan kontrolnya mudah.
+  
+  - nama: Astri
+    komentar: Grafisnya bagus dan kontrolnya mudah.
 
 faq:
   - pertanyaan: Apakah gratis?
