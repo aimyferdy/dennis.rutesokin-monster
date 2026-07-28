@@ -1,0 +1,664 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { SITE } from '../lib/site';
+import "../styles/blog.css";
+
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const tools = await getCollection('tools');
+const products = await getCollection('product');
+
+/* LATEST ARTICLES */
+
+const latestPosts = [...posts]
+  .sort(
+    (a, b) =>
+      new Date(b.data.date) -
+      new Date(a.data.date)
+  )
+  .slice(0, 3);
+
+/* POPULAR ARTICLES */
+
+const popularPosts =
+  posts.filter(post => post.data.popular).length > 0
+    ? posts
+        .filter(post => post.data.popular)
+        .slice(0, 3)
+    : posts.slice(0, 3);
+
+/* POPULAR TOOLS */
+
+const popularTools =
+  tools.filter(tool => tool.data.popular).length > 0
+    ? tools
+        .filter(tool => tool.data.popular)
+        .slice(0, 3)
+    : tools.slice(0, 3);
+
+/* POPULAR PRODUCTS */
+
+const popularProducts =
+  products.filter(product => product.data.popular).length > 0
+    ? products
+        .filter(product => product.data.popular)
+        .slice(0, 3)
+    : products.slice(0, 3);
+
+const pageTitle =
+  'Robopragma | Website Resmi Platform AI Indonesia';
+
+const pageDescription =
+  'Website resmi Robopragma. Akses platform AI Indonesia untuk produktivitas digital, pembuatan konten, dan solusi otomatisasi modern.';
+---
+
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={SITE.url()}
+  isHome={true}
+>
+<main class="main">
+<section id="hero" class="hero bg-gradient py-5 py-md-6"><div class="container"><div class="row align-items-center g-4 g-md-5"><div class="col-lg-7"><h1 class="display-3 display-md-1 fw-black lh-1 mb-3"><span class="text-primary fw-black">Robopragma Pro</span> <span class="text-primary fw-black">Live Dealer</span> Aplikasi - HD Studio Tables, Dragon Tiger &amp; Sic Bo</h1><p class="lead mb-4 text-body-secondary">We at Robopragma Pro operate live-dealer tables with multilingual support across DANA, e-wallet, mobile banking, local payment, and online payment. Our service is available only where local law permits — review the terms before opening an account.</p><div class="d-flex gap-2 flex-wrap"><a class="btn btn-primary btn-lg shadow-lg px-5 fw-bold" href="register/">Open an account</a><a class="btn btn-outline-secondary btn-sm" href="login/">Member login</a></div></div><div class="col-lg-5"><div class="position-relative"><figure class="img-fig"><img class="img-fluid rounded-4 shadow-lg w-100" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7UAa8IiwT1iCdHbWd83nLZbIJOgfB_uDfc5SUG5bMc_A3UKgPmKTNgpnz3qjNb3uruaS3rLu-_HteNhhyTTtkcJz9596KlG-5MChLTcEdxK8pa-nnWfBNjyCyUK0puzgInwgaXcA4RojepfgfgiCjGU65OIAL-D9ZicuIeV40abWfNul2DuAf5zMv9kw/s600/brnsk.png" alt="hero visual" loading="eager" decoding="async" style="aspect-ratio:4/3;object-fit:cover"></figure></div></div></div></div></section>
+<nav class="hero-toc" aria-label="Table of contents"><a href="#recommended-games">Featured games</a><a href="#promotions">Promotions</a><a href="#live-aplikasi">Live Aplikasi</a><a href="#payment-methods">Payment Methods</a><a href="#stat-row">Highlights</a><a href="#why-choose">Why Choose Us</a><a href="#comparison">Comparison</a><a href="#step-by-step">Quick Start</a><a href="#trust-badges">Security and Trust</a><a href="#welcome-bonus">Welcome Offer</a></nav>
+<section id="recommended-games" class="section section-soft">
+ <div class="container-lg">
+ <span class="eyebrow">Featured games</span>
+ <h2 class="fw-black">Recommended Games</h2>
+ <p class="lead">Our platform features titles from leading studios. Explore PG Soft, Quickspin, Yggdrasil, and Big Time Gaming — each offering distinct mechanics and themes.</p>
+ <div class="row row-cols-1 row-cols-md-3 g-3 my-4">
+ <div class="col">
+ <a href="pg-soft/" class="text-decoration-none">
+ <div class="card shadow-sm bg-body-tertiary h-100">
+ <div class="card-body">
+ <h4 class="h6 card-title">PG Soft</h4>
+ <p class="small text-body-secondary mb-0">Slot games with smooth mechanics and regional themes.</p>
+ </div>
+ </div>
+ </a>
+ </div>
+ <div class="col">
+ <a href="quickspin/" class="text-decoration-none">
+ <div class="card shadow-sm bg-body-tertiary h-100">
+ <div class="card-body">
+ <h4 class="h6 card-title">Quickspin</h4>
+ <p class="small text-body-secondary mb-0">Fast-paced performa with engaging bonus rounds.</p>
+ </div>
+ </div>
+ </a>
+ </div>
+ <div class="col">
+ <a href="yggdrasil/" class="text-decoration-none">
+ <div class="card shadow-sm bg-body-tertiary h-100">
+ <div class="card-body">
+ <h4 class="h6 card-title">Yggdrasil</h4>
+ <p class="small text-body-secondary mb-0">Premium performa with innovative features.</p>
+ </div>
+ </div>
+ </a>
+ </div>
+ <div class="col">
+ <a href="big-time-gaming/" class="text-decoration-none">
+ <div class="card shadow-sm bg-body-tertiary h-100">
+ <div class="card-body">
+ <h4 class="h6 card-title">Big Time Gaming</h4>
+ <p class="small text-body-secondary mb-0">Megaways mechanics and high-volatility titles.</p>
+ </div>
+ </div>
+ </a>
+ </div>
+ <div class="col">
+ <a href="tarung-mesin/" class="text-decoration-none">
+ <div class="card shadow-sm bg-body-tertiary h-100">
+ <div class="card-body">
+ <h4 class="h6 card-title">Tarung Mesin</h4>
+ <p class="small text-body-secondary mb-0">Regional slot experience with local appeal.</p>
+ </div>
+ </div>
+ </a>
+ </div>
+ <div class="col">
+ <a href="new-releases/" class="text-decoration-none">
+ <div class="card shadow-sm bg-body-tertiary h-100">
+ <div class="card-body">
+ <h4 class="h6 card-title">New Releases</h4>
+ <p class="small text-body-secondary mb-0">Latest titles added to our platform.</p>
+ </div>
+ </div>
+ </a>
+ </div>
+ </div>
+ </div>
+</section>
+<section id="promotions" class="section section-soft">
+ <div class="container-lg">
+ <span class="eyebrow">Current offers</span>
+ <h2 class="fw-black">Promotions</h2><div class="row g-4 align-items-center my-4"><div class="col-md-6"><figure class="m-0"><img src="img/sultan-menang-home-aplikasi-brand-03.jpg" loading="lazy" decoding="async" width="800" height="450" class="img-fluid rounded" alt="Mobile user and Brand " title="Robopragma Pro user "><figcaption class="text-muted small text-center mt-2">New user for Main, Secure use and </figcaption></figure></div><div class="col-md-6"><span class="badge bg-primary-subtle text-primary fw-bold mb-2">user </span><h3 class="h4 fw-bold mb-3 lh-sm">Why you trust Robopragma Pro</h3><p class="text-body-secondary mb-3 lh-base">Our commitment to transparency and reliability underpins every session you enjoy on our platform. We maintain consistent uptime, secure account encryption, and fair-play auditing across all games. Our live-dealer studios operate under studio production standards that rival international…</p><ul class="list-group list-group-flush mb-0"><li class="list-group-item d-flex align-items-start gap-3 px-0 py-3 bg-transparent border-bottom">Encrypted accounts We protect your login and financial data with industry-standard encryption protocols and regular security…</li><li class="list-group-item d-flex align-items-start gap-3 px-0 py-3 bg-transparent border-bottom">Live studio audits Our dealer studios undergo regular third-party inspections to confirm fair shuffling, card handling…</li><li class="list-group-item d-flex align-items-start gap-3 px-0 py-3 bg-transparent border-bottom">Payment verification We partner only with licensed payment processors such as DANA, e-wallet, mobile banking, and local payment…</li><li class="list-group-item d-flex align-items-start gap-3 px-0 py-3 bg-transparent border-bottom">Transparent rules Every game on Robopragma Pro displays its rules, table limits, and payout structure before…</li><li class="list-group-item d-flex align-items-start gap-3 px-0 py-3 bg-transparent border-bottom">Account controls Our platform lets you manage deposit frequency, session duration, and activity history. You hold…</li><li class="list-group-item d-flex align-items-start gap-3 px-0 py-3 bg-transparent border-bottom">Support availability Our English-speaking support team responds to account queries, technical hiccups, and gameplay clarifications throughout…</li></ul></div></div>
+ <p class="lead">We at Robopragma Pro run regular promotions tied to account milestones and seasonal events. Review the…</p>
+ <div class="row row-cols-1 row-cols-md-2 g-3 my-4">
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3">
+ <div class="d-flex gap-3">
+ <div class="fs-3"></div>
+ <div class="flex-grow-1">
+ <strong class="d-block">New Account Welcome Offer</strong>
+ <span class="small text-body-secondary">Available for first deposit. Terms apply.</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3">
+ <div class="d-flex gap-3">
+ <div class="fs-3"></div>
+ <div class="flex-grow-1">
+ <strong class="d-block">Weekly Cashback Bonus</strong>
+ <span class="small text-body-secondary">Eligible members receive cashback on weekly activity.</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3">
+ <div class="d-flex gap-3">
+ <div class="fs-3"></div>
+ <div class="flex-grow-1">
+ <strong class="d-block">Referral Bonus Program</strong>
+ <span class="small text-body-secondary">Invite friends and earn rewards. Conditions apply.</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3">
+ <div class="d-flex gap-3">
+ <div class="fs-3"></div>
+ <div class="flex-grow-1">
+ <strong class="d-block">Tournament Prize Pool</strong>
+ <span class="small text-body-secondary">Seasonal tournaments with prize draws for active players.</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+<section id="live-aplikasi" class="section">
+ <div class="container-lg">
+ <span class="eyebrow">Live tables</span>
+ <h2 class="fw-black"><span class="text-primary fw-black">Live <span class="text-primary fw-black">Aplikasi</span></span></h2>
+ <p class="lead">Our live-dealer studios broadcast in HD with professional dealers. We offer classic table games and regional variants — all with clear table limits and multilingual support.</p>
+ <div class="my-4">
+ <div class="d-flex flex-wrap gap-2">
+ <span class="badge bg-primary-subtle text-primary d-flex align-items-center gap-2">
+ 
+ Baccarat
+ </span>
+ <span class="badge bg-primary-subtle text-primary d-flex align-items-center gap-2">
+ 
+ Speed Baccarat
+ </span>
+ <span class="badge bg-primary-subtle text-primary d-flex align-items-center gap-2">
+ 
+ Roulette
+ </span>
+ <span class="badge bg-primary-subtle text-primary d-flex align-items-center gap-2">
+ 
+ Lightning Roulette
+ </span>
+ <span class="badge bg-primary-subtle text-primary d-flex align-items-center gap-2">
+ 
+ Blackjack
+ </span>
+ <span class="badge bg-primary-subtle text-primary d-flex align-items-center gap-2">
+ 
+ Dragon Tiger
+ </span>
+ <span class="badge bg-primary-subtle text-primary d-flex align-items-center gap-2">
+ 
+ Sic Bo
+ </span>
+ <span class="badge bg-primary-subtle text-primary d-flex align-items-center gap-2">
+ 
+ Andar Bahar
+ </span>
+ <span class="badge bg-primary-subtle text-primary d-flex align-items-center gap-2">
+ 
+ Teen Patti
+ </span>
+ <span class="badge bg-primary-subtle text-primary d-flex align-items-center gap-2">
+ 
+ Football Studio
+ </span>
+ </div>
+ </div>
+ </div>
+</section>
+<section id="payment-methods" class="section section-soft">
+ <div class="container-lg">
+ <span class="eyebrow">Deposit & withdraw</span>
+ <h2 class="fw-black">Payment Methods</h2>
+ <p class="lead">We at Robopragma Pro support regional e-wallets and bank transfers. Deposits and withdrawals use standard verification windows — no fabricated instant claims.</p>
+ <div class="row row-cols-1 row-cols-md-3 g-3 my-4">
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 text-center">
+ <div class="fs-3 mb-2"><i class="bi bi-credit-card-2-front" aria-hidden="true"></i></div>
+ <strong class="d-block">DANA</strong>
+ <span class="small text-body-secondary">subject to verification</span>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 text-center">
+ <div class="fs-3 mb-2"><i class="bi bi-credit-card-2-front" aria-hidden="true"></i></div>
+ <strong class="d-block">OVO</strong>
+ <span class="small text-body-secondary">subject to verification</span>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 text-center">
+ <div class="fs-3 mb-2"><i class="bi bi-credit-card-2-front" aria-hidden="true"></i></div>
+ <strong class="d-block">GoPay</strong>
+ <span class="small text-body-secondary">subject to verification</span>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 text-center">
+ <div class="fs-3 mb-2"><i class="bi bi-credit-card-2-front" aria-hidden="true"></i></div>
+ <strong class="d-block">ShopeePay</strong>
+ <span class="small text-body-secondary">subject to verification</span>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 text-center">
+ <div class="fs-3 mb-2"><i class="bi bi-credit-card-2-front" aria-hidden="true"></i></div>
+ <strong class="d-block">QRIS</strong>
+ <span class="small text-body-secondary">subject to verification</span>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 text-center">
+ <div class="fs-3 mb-2"><i class="bi bi-check2-circle" aria-hidden="true"></i></div>
+ <strong class="d-block">Bank Transfer</strong>
+ <span class="small text-body-secondary">subject to verification</span>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+<section id="stat-row" class="section section-line">
+ <div class="container-lg">
+ <span class="eyebrow">At a glance</span>
+ <h2 class="fw-black">Highlights</h2>
+ <div class="row row-cols-2 row-cols-md-4 g-3 my-4">
+ <div class="col text-center">
+ <strong class="d-block display-6 text-primary">12</strong>
+ <span class="small text-body-secondary">Live game types</span>
+ </div>
+ <div class="col text-center">
+ <strong class="d-block display-6 text-primary">6</strong>
+ <span class="small text-body-secondary">Payment methods</span>
+ </div>
+ <div class="col text-center">
+ <strong class="d-block display-6 text-primary">500+</strong>
+ <span class="small text-body-secondary">Slot titles</span>
+ </div>
+ <div class="col text-center">
+ <strong class="d-block display-6 text-primary">24/7</strong>
+ <span class="small text-body-secondary">English support</span>
+ </div>
+ </div>
+ <div class="row g-4 align-items-center my-4">
+ <div class="col-md-6">
+ <figure class="m-0">
+ <img src="img/sultan-menang-home-aplikasi-brand-02.jpg" loading="lazy" decoding="async" width="800" height="450" class="img-fluid rounded" alt="Live dealer table with professional setup and multiple camera angles" title="Robopragma Pro live dealer studio">
+ <figcaption class="text-muted small text-center mt-2">Professional live-dealer studio setup</figcaption>
+ </figure>
+ </div>
+ <div class="col-md-6">
+ <h3 class="h5 fw-bold mb-3">Platform overview</h3>
+ <ul class="list-group list-group-flush">
+ <li class="list-group-item px-0 bg-transparent">Sports Liga 1, Piala AFF, MotoGP</li>
+ <li class="list-group-item px-0 bg-transparent">Aplikasi Live dealer and performa</li>
+ <li class="list-group-item px-0 bg-transparent">Payment DANA, e-wallet, mobile banking, local payment, online payment</li>
+ <li class="list-group-item px-0 bg-transparent">Interface English (en-ID)</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+</section>
+<section id="why-choose" class="section section-line">
+ <div class="container-lg">
+ <span class="eyebrow">Platform strengths</span>
+ <h2 class="fw-black">Why Choose Us</h2>
+ <p class="lead">We at Robopragma Pro prioritize account security, payment clarity, and game variety. Here is what sets our platform apart.</p>
+ <div class="row row-cols-1 row-cols-md-3 g-3 my-4">
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-lightning-charge-fill" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Fast payout</h3>
+ <p class="small mb-0">Withdrawal requests reviewed within standard windows. DANA and e-wallet typically process in subject to verification.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-shield-check" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Secure transaction</h3>
+ <p class="small mb-0">SSL encryption and KYC verification protect your account. Two-factor authentication available for added security.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-check2-circle" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Main game coverage</h3>
+ <p class="small mb-0">Live dealer, performa, and sports markets — all in one platform. Explore Liga 1, Piala AFF…</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-check2-circle" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Live streaming</h3>
+ <p class="small mb-0">HD multi-camera live-dealer studios with professional dealers. Watch and play simultaneously.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-phone" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Mobile-first design</h3>
+ <p class="small mb-0">Responsive interface works on all devices. Play performa, live tables, or sports markets from your phone.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-headset" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Multilingual support</h3>
+ <p class="small mb-0">English-language help channels available. Contact us with account, payment, or game questions.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+<section id="comparison" class="section section-line">
+ <div class="container-lg">
+ <span class="eyebrow">Feature matrix</span>
+ <h2 class="fw-black">Comparison</h2>
+ <p class="lead">We at Robopragma Pro offer a comprehensive platform. Here is how our core features stack up.</p>
+ <div class="table-responsive my-4">
+ <table class="table table-borderless">
+ <thead>
+ <tr>
+ <th class="text-body-secondary">Feature</th>
+ <th class="text-center">Robopragma Pro</th>
+ <th class="text-center">Typical competitor</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td class="text-body-secondary">Live dealer tables</td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span> <span class="text-success-emphasis fw-semibold ms-1">multi-camera</span></td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span></td>
+ </tr>
+ <tr>
+ <td class="text-body-secondary">500+ slot games</td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span> <span class="text-success-emphasis fw-semibold ms-1">many slot titles</span></td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span></td>
+ </tr>
+ <tr>
+ <td class="text-body-secondary">DANA / e-wallet / mobile banking</td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span> <span class="text-success-emphasis fw-semibold ms-1">available</span></td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span></td>
+ </tr>
+ <tr>
+ <td class="text-body-secondary">Fast payout (5–15 min)</td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span> <span class="text-success-emphasis fw-semibold ms-1">subject to verification</span></td>
+ <td class="text-center"><span class="badge bg-warning-subtle text-warning">~</span> <span class="text-body-secondary ms-1">a few days</span></td>
+ </tr>
+ <tr>
+ <td class="text-body-secondary">KYC verification</td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span> <span class="text-success-emphasis fw-semibold ms-1">full KYC</span></td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span></td>
+ </tr>
+ <tr>
+ <td class="text-body-secondary">English support</td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span> <span class="text-success-emphasis fw-semibold ms-1">customer support</span></td>
+ <td class="text-center"><span class="badge bg-warning-subtle text-warning">~</span> <span class="text-body-secondary ms-1">English only</span></td>
+ </tr>
+ <tr>
+ <td class="text-body-secondary">Mobile app</td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span> <span class="text-success-emphasis fw-semibold ms-1">native app</span></td>
+ <td class="text-center"><span class="badge bg-success-subtle text-success"></span></td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+</section>
+<section id="step-by-step" class="section section-line">
+ <div class="container-lg">
+ <span class="eyebrow">Getting started</span>
+ <h2 class="fw-black">Quick Start</h2>
+ <p class="lead">Opening an account at Robopragma Pro takes a few minutes. Follow these steps to begin.</p>
+ <div class="row row-cols-1 row-cols-md-4 g-3 my-4">
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <span class="badge bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width:32px;height:32px;font-weight:bold">1</span>
+ <h3 class="h6 fw-bold">Sign up</h3>
+ <p class="small mb-0">Enter your email and create a password. Takes subject to verification.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <span class="badge bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width:32px;height:32px;font-weight:bold">2</span>
+ <h3 class="h6 fw-bold">KYC verification</h3>
+ <p class="small mb-0">Upload ID and proof of address. Review window is subject to verification.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <span class="badge bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width:32px;height:32px;font-weight:bold">3</span>
+ <h3 class="h6 fw-bold">Deposit</h3>
+ <p class="small mb-0">Choose DANA, e-wallet, mobile banking, or local payment. Funds arrive in subject to verification.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <span class="badge bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width:32px;height:32px;font-weight:bold">4</span>
+ <h3 class="h6 fw-bold">Play</h3>
+ <p class="small mb-0">Browse live tables, performa, or sports markets. Start with any game.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+<section id="trust-badges" class="section section-soft">
+ <div class="container-lg">
+ <span class="eyebrow">Security & compliance</span>
+ <h2 class="fw-black">Security and Trust</h2>
+ <p class="lead">We at Robopragma Pro operate with standard security practices and transparent account controls. Your data and funds are protected by industry-standard measures.</p>
+ <div class="row row-cols-1 row-cols-md-3 g-3 my-4">
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-shield-lock" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">SSL encryption</h3>
+ <p class="small mb-0">All data transmitted between your device and our servers is encrypted.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-patch-check-fill" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Account verification</h3>
+ <p class="small mb-0">KYC process confirms your identity. Two-factor authentication available for added protection.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-award-fill" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Fair play</h3>
+ <p class="small mb-0">Live-dealer games use professional studios. Slot games employ certified RNG systems.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-file-text" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Transparent records</h3>
+ <p class="small mb-0">View your account history, deposits, withdrawals, and game activity anytime.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-check2-circle" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Jurisdiction compliance</h3>
+ <p class="small mb-0">Our service operates only where local law permits. Review terms before opening an account.</p>
+ </div>
+ </div>
+ <div class="col">
+ <div class="card shadow-sm bg-body-tertiary p-3 h-100">
+ <div class="fs-3 mb-2"><i class="bi bi-headset" aria-hidden="true"></i></div>
+ <h3 class="h6 fw-bold">Support channels</h3>
+ <p class="small mb-0">English-language help available for account, payment, and security questions.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+<section id="welcome-bonus" class="section">
+ <div class="container-lg">
+ <div class="alert alert-info border-start border-3 border-info d-flex gap-3 my-4">
+ <i class="bi bi-gift fs-3 text-info lh-1 flex-shrink-0" aria-hidden="true"></i>
+ <div>
+ <h3 class="h5 mb-1">Welcome offer for new members</h3>
+ <p class="mb-0">We at Robopragma Pro provide an attractive bonus offer for first-time account holders. Terms apply — review the promotion details before claiming.</p>
+ <div class="mt-3"><a class="btn btn-info btn-sm" href="register/">Open an account</a></div>
+ </div>
+ </div>
+ </div>
+</section>
+<section id="featured-game" class="section featured-game section-feature"><span class="badge text-bg-primary fg-badge mb-2">Fan favourite</span><h2 class="mb-4 fw-black">Tarung Mesin — our premier slot experience</h2><div class="row g-4 align-items-center"><div class="col-md-6"><figure class="m-0 position-relative"><img src="img/sultan-menang-home-aplikasi-brand-04.png" loading="lazy" decoding="async" width="800" height="400" alt="Tarung Mesin Game "></figure></div><div class="col-md-6"><h3 class="h4 fw-bold mb-2">Tarung Mesin</h3><p class="mb-3">Tarung Mesin brings fast-paced, visually immersive slot gameplay to our platform. We partnered with leading game studios to deliver Tarung Mesin with smooth mechanics, responsive controls, and frequent bonus rounds. Our players enjoy multiple paylines, wild symbols, and…</p><ul class="list-group list-group-flush mb-3"><li class="list-group-item bg-transparent border-0 ps-0 py-1">High-definition graphics and smooth animations</li><li class="list-group-item bg-transparent border-0 ps-0 py-1">Multiple paylines and dynamic bonus triggers</li><li class="list-group-item bg-transparent border-0 ps-0 py-1">Fast spin mechanics with responsive mobile controls</li></ul><a class="btn btn-primary" href="tarung-mesin/">Explore Tarung Mesin now</a></div></div></section>
+<section id="spotlight" class="section section-feature"><h2 class="fw-black text-center mb-4">What we deliver at <span class="text-primary fw-black">Robopragma Pro</span></h2><div class="row row-cols-1 row-cols-md-3 g-4"><div class="col"><div class="card shadow-sm bg-body-tertiary h-100"><div class="card-body text-center"><h3 class="card-title h5 fw-bold">New account</h3><p class="display-6 fw-black my-3 text-primary">Free</p><ul class="list-unstyled small"><li>Welcome offer overview</li><li>Mobile access</li><li>English support</li></ul></div></div></div><div class="col"><div class="card shadow-sm bg-body-tertiary h-100"><div class="card-body text-center position-relative"><span class="badge bg-primary position-absolute top-0 start-50 translate-middle">Popular</span><h3 class="card-title h5 fw-bold">Regular member</h3><p class="display-6 fw-black my-3 text-primary">Standard</p><ul class="list-unstyled small"><li>Faster withdrawal review</li><li>Weekly cashback notes</li><li>Priority support queue</li></ul></div></div></div><div class="col"><div class="card shadow-sm bg-body-tertiary h-100"><div class="card-body text-center"><h3 class="card-title h5 fw-bold">VIP</h3><p class="display-6 fw-black my-3 text-primary">Exclusive</p><ul class="list-unstyled small"></ul></div></div></div></div></section>
+<section id="faq" class="section section-line">
+ <div class="container-lg">
+ <span class="eyebrow">Common questions</span>
+ <h2 class="fw-black">FAQ</h2>
+ <p class="text-body-secondary mb-3">your — sultanmenang.app Start before. in We All you Fast. our Support with Contact us.</p>
+
+ <div class="accordion my-4" id="homeFAQ">
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1" aria-expanded="false" aria-controls="faq-1">Where is Robopragma Pro service available?</button></h2>
+ <div id="faq-1" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">We at Robopragma Pro operate only in jurisdictions where online gaming is permitted by local law. Our service is available across supported regions in Southeast Asia — including Jakarta, Surabaya, Bandung, Medan, and Semarang — via DANA, e-wallet, mobile banking, local payment, and online payment payment rails. Before opening an account, verify that access complies with your own jurisdiction's regulations. We do not offer services in jurisdictions where online wagering is prohibited.</div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2" aria-expanded="false" aria-controls="faq-2">What are the deposit ranges supported by Robopragma Pro?</button></h2>
+ <div id="faq-2" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">We at Robopragma Pro accept deposits from many regional e-wallet and bank transfer options. Minimum and maximum deposit amounts vary by payment method — e-wallet, mobile banking, local payment, and online payment each have their own limits based on your account status and verification level. We recommend logging into your account to view the exact deposit range for your chosen payment method. All deposits are reviewed for compliance before funds appear in your account.</div>
+ </div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3" aria-expanded="false" aria-controls="faq-3">Which rules should a new user read before starting a session?</button></h2>
+ <div id="faq-3" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">Before your first session at Robopragma Pro, review our full terms and conditions — particularly account eligibility, deposit and withdrawal procedures, bonus terms, game rules, and jurisdiction notice. New users must pass KYC verification (identity and address confirmation), which typically takes subject to verification. Understand that live-dealer games involve real stakes, performa use certified RNG systems, and all activity is recorded for security. Set your own account preferences and limits. Contact our English support team with any questions.</div>
+ </div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-4" aria-expanded="false" aria-controls="faq-4">What are the typical terms for a bonus offer?</button></h2>
+ <div id="faq-4" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">We at Robopragma Pro offer promotions tied to account milestones — such as first deposit, weekly activity, or referral rewards. Each promotion carries its own eligibility criteria, turnover requirements, and expiry date. Bonus terms are displayed clearly before you claim. We do not offer fixed bonus amounts or guaranteed percentages — all offers are subject to verification and terms review. Read the promotion details carefully. Contact our support team if you need clarification on any bonus offer.</div>
+ </div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-5" aria-expanded="false" aria-controls="faq-5">What account-control tools does Robopragma Pro provide?</button></h2>
+ <div id="faq-5" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">Your Robopragma Pro account includes tools to manage your security and preferences. Enable two-factor authentication for added protection. View your full transaction history — deposits, withdrawals, and game activity. Update your password and contact information anytime. Review your KYC verification status. Check ongoing promotions and bonus balances. Set your account preferences and language. Our English support team is available to help you navigate these tools or reset your password if needed.</div>
+ </div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-6" aria-expanded="false" aria-controls="faq-6">How do I contact Robopragma Pro customer support?</button></h2>
+ <div id="faq-6" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">We at Robopragma Pro offer multilingual support via live chat, email, and help centre. English-language channels are available to assist with account setup, deposits, withdrawals, game rules, bonus questions, and technical issues. Live chat response times vary based on volume. Email inquiries are typically acknowledged within standard business windows. Visit our contact page or log into your account to access the support team. Our help centre also carries FAQs and payment guides for common questions.</div>
+ </div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-7" aria-expanded="false" aria-controls="faq-7">Can one user keep more than one account?</button></h2>
+ <div id="faq-7" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">No. We at Robopragma Pro allow one active account per person. Opening multiple accounts violates our terms and may result in suspension. Our verification system flags duplicate accounts during KYC review. If you accidentally create more than one account, contact our support team immediately to have duplicate accounts closed. Using multiple accounts to circumvent promotions or limits is prohibited. Keep one account active and update your details as needed.</div>
+ </div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-8" aria-expanded="false" aria-controls="faq-8">How long does a withdrawal request take to review?</button></h2>
+ <div id="faq-8" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">Withdrawal requests at Robopragma Pro are reviewed subject to standard verification windows. Typical processing times depend on your payment method — e-wallet and mobile banking withdrawals often complete within subject to verification, while bank transfers may take subject to verification. Times may vary based on account verification status and payment-provider processing. Your withdrawal history is visible in your account dashboard. If a withdrawal is delayed beyond the expected window, contact our English support team for assistance.</div>
+ </div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-9" aria-expanded="false" aria-controls="faq-9">What game categories does Robopragma Pro offer?</button></h2>
+ <div id="faq-9" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">We at Robopragma Pro offer live-dealer tables — Baccarat, Roulette, Blackjack, Dragon Tiger, Sic Bo, Andar Bahar, Teen Patti — plus over 500 slot titles from PG Soft, Quickspin, Yggdrasil, Big Time Gaming, and regional studios. Sports markets cover Liga 1, Piala AFF, Champions League, Premier League, MotoGP, and badminton events. Esports markets include Mobile Legends, Free Fire, and PUBG Mobile. All game categories are accessible from the platform menu. Browse by provider, theme, or volatility to find games that suit your preference.</div>
+ </div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-10" aria-expanded="false" aria-controls="faq-10">Where do I enter a promotion code?</button></h2>
+ <div id="faq-10" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">Promotion codes at Robopragma Pro are entered in your account settings under the "Promotions" or "Bonus Code" section — typically visible after login. Some promotions are applied automatically to your account upon deposit or milestone achievement. If you have a specific code, paste it into the designated field and confirm. Your account dashboard will display the promo status and any bonus balance. If a code does not work, verify the expiry date and eligibility. Contact our support team if you need help applying a promotion code.</div>
+ </div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-11" aria-expanded="false" aria-controls="faq-11">How do I send a data-deletion request to Robopragma Pro?</button></h2>
+ <div id="faq-11" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">We at Robopragma Pro provide a data-deletion process for users who wish to permanently close their account and request removal of personal data. Submit your request via email to our support team with your account username and email address. Include "Account Closure and Data Deletion" in the subject line. Our team will verify your identity, process any outstanding transactions, and initiate the deletion process according to applicable data-protection law. Retain records of your transactions before deletion, as they cannot be recovered afterward.</div>
+ </div>
+ </div>
+ </div>
+ <div class="accordion-item">
+ <h2 class="accordion-header">
+ <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-12" aria-expanded="false" aria-controls="faq-12">When is live chat available?</button></h2>
+ <div id="faq-12" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+ <div class="accordion-body">Our Robopragma Pro live chat support operates during standard business windows and peak hours. English-language support is available to help with account questions, deposit and withdrawal guidance, game rules, bonus inquiries, and technical assistance. Response times vary based on queue volume. If live chat is unavailable, use email support or visit our help centre. Check your account dashboard for current support hours. For urgent issues, contact our email team — responses typically arrive within standard business hours.</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+<section id="seo-longform" class="section seo-longform section-compact">
+ <div class="container-lg">
+ <span class="eyebrow">Detailed guide</span>
+ <h2 class="fw-black">Platform notes</h2>
+ <div class="seo-details-wrap seo-variant-guide-card"><button class="seo-toggle seo-toggle-guide card border-0 shadow-sm w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#seoCollapse-1a5ceb8777" aria-expanded="false" aria-controls="seoCollapse-1a5ceb8777"><div class="card-body d-flex align-items-center gap-3"><div class="seo-guide-icon flex-shrink-0"><i class="bi bi-journal-text"></i></div><div class="flex-grow-1 min-width-0"><div class="fw-bold seo-toggle-text">Platform overview</div><div class="small text-body-secondary">Platform overview</div></div><i class="bi bi-chevron-down seo-toggle-icon flex-shrink-0" aria-hidden="true"></i></div></button><div class="collapse seo-collapse" id="seoCollapse-1a5ceb8777"><div class="seo-copy">
+ <h3>Platform security layers</h3>
+ <p>We at Robopragma Pro protect your account and funds through industry-standard encryption and verification. All data transmitted between your device and our servers uses SSL encryption — a technology that scrambles your information so it cannot be intercepted. During account creation, we collect your identity and address information through our KYC (Know Your Customer) verification process. This step typically takes subject to verification and confirms your eligibility to use the platform. We store all personal data in secure, encrypted databases. Two-factor authentication is available for added security — enable it in your account settings to require a second verification step during login. Your password should be unique and complex; never share it with anyone. If you suspect unauthorized access, reset your password immediately and contact our English support team. All transactions — deposits, withdrawals, and game activity — are logged and encrypted. You can review your complete transaction history anytime from your account dashboard.</p>
+
+ <h3>Game fairness and RTP</h3>
+ <p>We at Robopragma Pro operate two distinct game categories, each with different fairness mechanisms. Live-dealer tables are broadcast in real time from professional HD studios. Professional dealers conduct all games — Baccarat, Roulette, Blackjack, Dragon Tiger, Sic Bo, Andar Bahar, Teen Patti — according to established rules. You watch the game unfold on camera; the outcome depends on physical cards, spin wheels, or dice, not software. Slot games and other automated titles use a Random Number Generator (RNG), a certified algorithm that ensures every spin outcome is unpredictable and independent. RNG-based games carry an RTP (Return to Player) percentage — a statistical measure indicating the average payout over a very large number of plays. For example, a slot with returns an average of 96 units per 100 units wagered over millions of spins. RTP is not a guaranteed personal outcome; individual sessions vary widely. All our slot providers — PG Soft, Quickspin, Yggdrasil, Big Time Gaming — use certified RNG systems audited by independent laboratories. Live-dealer games have no RTP percentage; outcomes depend on dealer actions and physical events.</p>
+
+ <h3>KYC verification process</h3>
+ <p>We at Robopragma Pro require KYC verification to comply with anti-money-laundering regulations and confirm your eligibility. During sign-up, you provide your full legal name, date of birth, email, and phone number. Before your first withdrawal, we ask you to upload an identity document (passport, national ID, or driver's licence) and proof of address (utility bill or bank statement dated within the last 90 days). Our verification team reviews these documents within subject to verification during standard hours. Acceptable documents must be clear, legible, and match the name registered on your account. If your documents are unclear or do not match, we request resubmission. Once verified, your account is fully activated for deposits and withdrawals. Verification is a one-time process — you do not need to reverify for each transaction. If your address changes, update it in your account settings and resubmit proof of address if requested. KYC is mandatory for all users; accounts that do not complete verification cannot withdraw funds.</p>
+
+ <h3>User feedback and review channels</h3>
+ <p>We at Robopragma Pro encourage users to share feedback about their experience. Your input helps us improve our platform — from payment methods to game variety to support quality. You can leave feedback directly in your account settings or contact our English support team via live chat, email, or help centre. Online reviews from independent sources may mention Robopragma Pro — read multiple sources and consider both positive and critical perspectives to form your own view. No single review represents the complete picture; individual experiences vary based on payment method, game preference, regional factors, and personal expectations. We do not claim specific star ratings or rankings — user satisfaction depends on your own priorities and circumstances. If you experience an issue — a delayed withdrawal, a game glitch, a billing question — report it to our support team immediately. We investigate complaints and work toward resolution. Your honest feedback, whether positive or constructive, is valuable to our team.</p>
+ </div></div></div>
+ </div>
+ </section>
+<section id="location" class="section location-section section-compact"><div class="location-content"><div class="location-copy"><span class="eyebrow">Service area</span><h2 class="fw-black">Jakarta — <span class="text-primary fw-black">Robopragma Pro</span> Aplikasi &amp; <span class="text-primary fw-black">Sportsbook</span> platform</h2><p>Jakarta is one of the regions our Robopragma Pro platform serves where local law permits. Payment options include DANA, e-wallet, mobile banking, local payment, online payment for e-wallets and e-wallet, mobile banking, local payment, online payment for bank transfers. Account verification and support follow…</p><div class="area-tags"><span>Jakarta</span><span>Surabaya</span><span>Bandung</span><span>Medan</span><span>Semarang</span></div></div><div class="location-map"><iframe src="https://maps.google.com/maps?q=Jakarta,Indonesia&hl=en&z=12&output=embed&language=en" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:100%;border:0"></iframe></div></div></section>
+</main>
+
+</MainLayout>
