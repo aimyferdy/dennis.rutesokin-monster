@@ -1,6 +1,6 @@
 ---
-title: Contoh Artikel
-description: Contoh deskripsi
+title: "Ai Mr Dennis dan Masa Depan AI Indonesia untuk Digital Growth"
+description: "Ai Mr Dennis menghadirkan pendekatan modern dalam pengembangan aplikasi AI Indonesia untuk membantu digital growth, 
 ---
 
 ## Cara Install
