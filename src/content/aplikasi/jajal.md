@@ -1,6 +1,6 @@
 ---
 title: Ai Mr Dennis
-description: Ai Mr Dennis adalah game sepak bola yang seru.
+description: Dapatkan akses mudah ke berbagai file dan konten berkualitas yang siap diunduh, membuat pengalaman Anda lebih praktis dan menyenangkan.
 
 pubDate: 2026-07-20
 popular: true
