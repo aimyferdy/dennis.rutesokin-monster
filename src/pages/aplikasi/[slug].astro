@@ -304,7 +304,12 @@ const relatedApps = allApps
   </article>
 )}
 
-
+<RelatedPosts
+  posts={apps}
+  currentSlug={app.slug}
+  title="Aplikasi Terkait"
+  baseUrl="/aplikasi"
+/>
         <p class="game-back-link"><a href="/">← Kembali ke Katalog Aplikasi</a></p>
       </main>
 
