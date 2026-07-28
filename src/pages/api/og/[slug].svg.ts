@@ -2,18 +2,10 @@ import { getCollection } from "astro:content";
 import { SITE } from "../../../lib/site";
 
 export async function getStaticPaths() {
-
   const posts = await getCollection("blog");
-  const tools = await getCollection("tools");
-  const product = await getCollection("product");
+  const aplikasi = await getCollection("aplikasi");
 
-  const items = [
-    ...posts,
-    ...tools,
-    ...product
-  ];
-
-  return items.map((item) => ({
+  return [...posts, ...aplikasi].map((item) => ({
     params: {
       slug: item.slug
     }
@@ -21,16 +13,10 @@ export async function getStaticPaths() {
 }
 
 export async function GET({ params }) {
-
   const posts = await getCollection("blog");
-  const tools = await getCollection("tools");
-  const product = await getCollection("product");
+  const aplikasi = await getCollection("aplikasi");
 
-  const items = [
-    ...posts,
-    ...tools,
-    ...product
-  ];
+  const items = [...posts, ...aplikasi];
 
   const item = items.find(
     (p) => p.slug === params.slug
@@ -42,10 +28,8 @@ export async function GET({ params }) {
   const kategori =
     (
       item?.data.category ||
-      (tools.some(t => t.slug === params.slug)
-        ? "TOOLS"
-        : product.some(p => p.slug === params.slug)
-        ? "PRODUCT"
+      (aplikasi.some(a => a.slug === params.slug)
+        ? "APLIKASI"
         : "BLOG")
     ).toUpperCase();
 
