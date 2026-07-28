@@ -1,8 +1,9 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
 import "../../styles/game.css";
+import MainLayout from "../../layouts/MainLayout.astro";
 
 import { getCollection, render } from "astro:content";
+import { SITE } from "../../lib/site";
 
 export async function getStaticPaths() {
   const posts = await getCollection("aplikasi");
@@ -20,13 +21,47 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 
 const { Content } = await render(post);
+
+const canonical = `${SITE.url()}/aplikasi/${post.slug}`;
 ---
 
 <MainLayout
   title={post.data.title}
   description={post.data.description}
+  canonical={canonical}
+  slug={post.slug}
 >
 
-<Content />
+<section class="page-hero">
+  <div class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Beranda</a>
+      <span>›</span>
+      <a href="/aplikasi/">Katalog Aplikasi</a>
+      <span>›</span>
+      {post.data.title}
+    </nav>
+
+    <h1>{post.data.title}</h1>
+
+    <p class="page-hero-lead">
+      {post.data.description}
+    </p>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <article class="game-article">
+
+      <Content />
+
+    </article>
+
+  </div>
+</section>
 
 </MainLayout>
