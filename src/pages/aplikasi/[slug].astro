@@ -23,6 +23,12 @@ const { Content } = await render(post);
 
 const canonical = `${SITE.url()}/aplikasi/${post.slug}`;
 const data = post.data;
+
+const allApps = await getCollection("aplikasi");
+
+const relatedApps = allApps
+  .filter((app) => app.data.popular && app.slug !== post.slug)
+  .slice(0, 6);
 ---
 
 <MainLayout
@@ -232,6 +238,47 @@ const data = post.data;
             </details>
           </div>
         </article>
+
+
+
+
+
+{relatedApps.length > 0 && (
+  <article class="game-block game-related">
+    <header class="game-section-head">
+      <span class="game-section-num">08</span>
+      <h2>Aplikasi Populer</h2>
+    </header>
+
+    <div class="game-related-grid">
+      {relatedApps.map((app) => (
+        <a href={`/aplikasi/${app.slug}/`} class="game-related-card">
+          <img
+            src={app.data.icon}
+            alt={app.data.title}
+            class="game-related-icon"
+            width="52"
+            height="52"
+          />
+
+          <span class="game-related-name">
+            {app.data.title}
+          </span>
+
+          <span class="game-related-meta">
+            {app.data.category} · {app.data.version}
+          </span>
+
+          <span class="game-related-rating">
+            ★ {app.data.rating}
+          </span>
+        </a>
+      ))}
+    </div>
+  </article>
+)}
+
+
 
         <article class="game-block game-related">
           <header class="game-section-head">
