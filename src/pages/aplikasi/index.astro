@@ -1,0 +1,77 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import "../../styles/aplikasi.css";
+import { getCollection } from "astro:content";
+
+const apps = await getCollection("aplikasi");
+
+// urutkan terbaru
+apps.sort((a, b) =>
+  new Date(b.data.pubDate).getTime() -
+  new Date(a.data.pubDate).getTime()
+);
+---
+
+<MainLayout
+  title="Katalog Aplikasi"
+  description="Daftar aplikasi terbaru"
+>
+
+<section class="page-hero">
+  ...
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="app-list">
+
+      {apps.map(({ slug, data }) => (
+        <article class="app-row">
+
+          <img
+            src={data.image}
+            alt={data.title}
+            class="app-row-icon"
+            width="64"
+            height="64"
+          >
+
+          <div class="app-row-body">
+
+            <h2>{data.title}</h2>
+
+            <p class="app-row-meta">
+              <span>{data.category}</span>
+              <span>{data.version}</span>
+              <span>{data.size}</span>
+            </p>
+
+            <p>{data.description}</p>
+
+          </div>
+
+          <div class="app-row-action">
+
+            <span class="app-row-rating">
+              ★ {data.rating}
+            </span>
+
+            <a
+              href={`/aplikasi/${slug}/`}
+              class="btn btn-outline btn-sm"
+            >
+              Lihat Detail
+            </a>
+
+          </div>
+
+        </article>
+      ))}
+
+    </div>
+
+  </div>
+</section>
+
+</MainLayout>
