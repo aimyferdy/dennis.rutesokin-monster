@@ -2,7 +2,7 @@
 import "../../styles/game.css";
 import "../../styles/pagegame.css";
 import MainLayout from "../../layouts/MainLayout.astro";
-import RelatedPosts from "../../components/RelatedPosts.astro";
+
 
 import { getCollection, render } from "astro:content";
 import { SITE } from "../../lib/site";
@@ -31,9 +31,7 @@ const relatedApps = allApps
   .filter((app) => app.data.popular && app.slug !== post.slug)
   .slice(0, 6);
 
-const relatedPosts = allApps.filter(
-  (item) => item.slug !== post.slug
-);
+
 ---
 
 <MainLayout
@@ -309,12 +307,6 @@ const relatedPosts = allApps.filter(
   </article>
 )}
 
-<RelatedPosts
-  posts={relatedPosts}
-  currentSlug={post.slug}
-  title="Aplikasi Terkait"
-  baseUrl="/aplikasi"
-/>
         <p class="game-back-link"><a href="/">← Kembali ke Katalog Aplikasi</a></p>
       </main>
 
