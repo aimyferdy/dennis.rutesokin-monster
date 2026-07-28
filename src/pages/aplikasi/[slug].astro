@@ -29,15 +29,6 @@ const allApps = await getCollection("aplikasi");
 const relatedApps = allApps
   .filter((app) => app.data.popular && app.slug !== post.slug)
   .slice(0, 6);
-  
-const hash = [...post.slug].reduce(
-  (sum, char) => sum + char.charCodeAt(0),
-  0
-);
-
-const startCount = 10000 + (hash * 37);
-
-
 ---
 
 <MainLayout
@@ -51,7 +42,7 @@ const startCount = 10000 + (hash * 37);
 
   <section class="game-hero">
     <div class="game-hero-bg" aria-hidden="true">
-      <img src={data.hero} alt="{data.title}">
+      <img src="https://Ai Mr Dennisrp.com/apk/Ai Mr Dennis-1.webp" alt="">
     </div>
     <div class="game-hero-overlay"></div>
     <div class="container game-hero-inner">
@@ -74,7 +65,7 @@ const startCount = 10000 + (hash * 37);
             <span class="game-stars">★★★★★</span>
             <strong>4.3</strong>
             <span class="game-rating-sep">·</span>
-            {startCount} unduhan
+            {Math.floor((10000 + [...post.slug].reduce((a, c) => a + c.charCodeAt(0), 0) * 37) / 1000)}K+ unduhan
           </p>
           <p class="game-detail-lead">{data.description}</p>
 
