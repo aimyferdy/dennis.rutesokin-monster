@@ -46,6 +46,15 @@ const popularProducts =
         .slice(0, 3)
     : products.slice(0, 3);
 
+
+import { getCollection } from "astro:content";
+
+const popularApps = (await getCollection("aplikasi"))
+  .filter(({ data }) => data.popular)
+  .slice(0, 8);
+
+
+
 const pageTitle =
   'Robopragma | Website Resmi Platform AI Indonesia';
 
@@ -168,68 +177,50 @@ const pageDescription =
     </div>
   </section>
 
-  <!-- Aplikasi Populer -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Aplikasi Populer di Ai Mr Dennis</h2>
-        <p>Delapan aplikasi populer di Ai Mr Dennis — daftar diperbarui rutin mengikuti tren unduhan.</p>
-      </div>
-      <div class="index-popular-grid">
+ <!-- Aplikasi Populer -->
+<section class="section">
+  <div class="container">
 
-<a href="/juara666/" class="index-popular-card">
-          <img src="https://dennis.rutesokin.monster/apk/juara666.webp" alt="juara666" class="index-popular-icon" width="52" height="52">
-          <span class="index-popular-name">juara666</span>
-          <span class="index-popular-meta">Casual · v3.3.5</span>
-          <span class="index-popular-rating">★ 4.6</span>
-        </a>
-<a href="/55five/" class="index-popular-card">
-          <img src="https://dennis.rutesokin.monster/apk/55five.webp" alt="55five" class="index-popular-icon" width="52" height="52">
-          <span class="index-popular-name">55five</span>
-          <span class="index-popular-meta">MMORPG · v2.7.6</span>
-          <span class="index-popular-rating">★ 4.5</span>
-        </a>
-<a href="/galaxy77/" class="index-popular-card">
-          <img src="https://dennis.rutesokin.monster/apk/galaxy77.webp" alt="galaxy77" class="index-popular-icon" width="52" height="52">
-          <span class="index-popular-name">galaxy77</span>
-          <span class="index-popular-meta">TPS · v7.2.6</span>
-          <span class="index-popular-rating">★ 4.9</span>
-        </a>
-<a href="/untunggo/" class="index-popular-card">
-          <img src="https://dennis.rutesokin.monster/apk/untunggo.webp" alt="untunggo" class="index-popular-icon" width="52" height="52">
-          <span class="index-popular-name">untunggo</span>
-          <span class="index-popular-meta">Simulation · v6.9.1</span>
-          <span class="index-popular-rating">★ 4.1</span>
-        </a>
-<a href="/idr77/" class="index-popular-card">
-          <img src="https://dennis.rutesokin.monster/apk/idr77.webp" alt="idr77" class="index-popular-icon" width="52" height="52">
-          <span class="index-popular-name">idr77</span>
-          <span class="index-popular-meta">Utility · v8.6.2</span>
-          <span class="index-popular-rating">★ 4.0</span>
-        </a>
-<a href="/jktplus/" class="index-popular-card">
-          <img src="https://dennis.rutesokin.monster/apk/jktplus.webp" alt="jktplus" class="index-popular-icon" width="52" height="52">
-          <span class="index-popular-name">jktplus</span>
-          <span class="index-popular-meta">Sportsbook · v7.5.2</span>
-          <span class="index-popular-rating">★ 4.5</span>
-        </a>
-<a href="/gacormax/" class="index-popular-card">
-          <img src="https://dennis.rutesokin.monster/apk/gacormax.webp" alt="gacormax" class="index-popular-icon" width="52" height="52">
-          <span class="index-popular-name">gacormax</span>
-          <span class="index-popular-meta">Slot · v3.5.7</span>
-          <span class="index-popular-rating">★ 4.4</span>
-        </a>
-<a href="/mikatoto/" class="index-popular-card">
-          <img src="https://dennis.rutesokin.monster/apk/mikatoto.webp" alt="mikatoto" class="index-popular-icon" width="52" height="52">
-          <span class="index-popular-name">mikatoto</span>
-          <span class="index-popular-meta">Kasino · v7.5.8</span>
-          <span class="index-popular-rating">★ 4.6</span>
-        </a>
-
-
-      </div>
+    <div class="section-header">
+      <h2>Aplikasi Populer di Ai Mr Dennis</h2>
+      <p>
+        Delapan aplikasi populer di Ai Mr Dennis — daftar diperbarui rutin mengikuti tren unduhan.
+      </p>
     </div>
-  </section>
+
+    <div class="index-popular-grid">
+      {popularApps.map(({ slug, data }) => (
+        <a
+          href={`/aplikasi/${slug}/`}
+          class="index-popular-card"
+        >
+          <img
+            src={data.icon || data.image}
+            alt={data.title}
+            class="index-popular-icon"
+            width="52"
+            height="52"
+          />
+
+          <span class="index-popular-name">
+            {data.title}
+          </span>
+
+          <span class="index-popular-meta">
+            {data.category} · {data.version}
+          </span>
+
+          <span class="index-popular-rating">
+            ★ {data.rating}
+          </span>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+
 
   <!-- Cuplikan Layar — index13, index14, index15 -->
   <section class="section">
