@@ -31,6 +31,7 @@ kelebihan:
 kekurangan:
   - Perlu koneksi internet
   - Ukuran aplikasi cukup besar
+  - Ukuran aplikasi cukupok
 
 ulasan:
   - nama: Salsa
